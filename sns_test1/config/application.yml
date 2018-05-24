@@ -5,10 +5,8 @@ server:
 #mysql jdbc
 spring:
   datasource:
-    driver-class-name: com.mysql.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/test
-    username: root
-    password: root
+
+
     
     #druid配置
     druid:
@@ -25,8 +23,5 @@ mybatis:
   configuration:
     map-underscore-to-camel-case: true
     
-#控制台打印sql语句
-logging:
-  level:
-    hello.test.dao: debug
+
     
