@@ -1,0 +1,32 @@
+#端口
+server:
+  port: 8081
+  
+#mysql jdbc
+spring:
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/test
+    username: root
+    password: root
+    
+    #druid配置
+    druid:
+      aop-patterns: hello.test.*
+      stat-view-servlet:
+        login-username: admin
+        login-password: 123
+  
+#mybatis加载
+mybatis:
+  mapper-locations: classpath:mapping/*.xml
+  type-aliases-package: hello.test.entity
+  #下划线转驼峰命名
+  configuration:
+    map-underscore-to-camel-case: true
+    
+#控制台打印sql语句
+logging:
+  level:
+    hello.test.dao: debug
+    
