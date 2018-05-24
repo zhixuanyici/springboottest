@@ -18,7 +18,7 @@ public class HelloController {
 
 	@GetMapping("helloOne")
 	public String getHelloOne(){
-		return "hao     +" + helloOne + key3;
+		return "hao     +" + helloOne + "  config-dev  "+key3;
 	}
 
 	
