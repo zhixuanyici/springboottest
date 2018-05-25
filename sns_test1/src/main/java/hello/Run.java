@@ -5,6 +5,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
+//mybatis reload xml
 @MapperScan("hello.test.dao")
 public class Run {
 

@@ -11,7 +11,9 @@ spring:
     password: root
     
     
-#控制台打印sql语句
+
 logging:
+  #控制台打印sql语句
   level:
     hello.test.dao: debug
+

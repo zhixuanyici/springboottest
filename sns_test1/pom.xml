@@ -64,11 +64,27 @@
 		</dependency> 
 	    <!-- 引入mybatis end -->  
 	    
+	    <!--  druid  begin -->
 	    <dependency>  
 		    <groupId>com.alibaba</groupId>  
 		    <artifactId>druid-spring-boot-starter</artifactId>  
 		    <version>1.1.0</version>  
 		</dependency>
+	    <!--  druid  end -->
+		
+		
+	    <!--  quartz  begin -->
+		<dependency>
+			<groupId>org.quartz-scheduler</groupId>
+			<artifactId>quartz</artifactId>
+			<version>2.2.1</version>
+		</dependency>
+		<dependency>
+			<groupId>org.quartz-scheduler</groupId>
+			<artifactId>quartz-jobs</artifactId>
+			<version>2.2.1</version>
+		</dependency>
+	    <!--  quartz  end -->
 	    
 	</dependencies> 
 	
