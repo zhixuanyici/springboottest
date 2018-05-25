@@ -50,3 +50,5 @@
 2018-05-25 15:56:12,442 INFO (SnsInterceptor.java:21)- ========afterCompletion=========
 2018-05-25 15:56:12,442 INFO (SnsInterceptor.java:23)- 耗时:616
 2018-05-25 15:56:12,448 INFO (SnsFilter.java:31)- filter 耗时：636
+2018-05-25 15:57:54,248 INFO (SnsFilter.java:22)- 销毁过滤器
+2018-05-25 15:57:54,249 INFO (SnsListener.java:14)- 监听到事件
