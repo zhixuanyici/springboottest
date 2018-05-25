@@ -7,7 +7,7 @@
 spring:
   #配置文件环境
   profiles:
-    active: dev
+    active: prod
   #druid配置
   datasource: 
     druid:

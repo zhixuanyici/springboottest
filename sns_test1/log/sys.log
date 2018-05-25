@@ -52,3 +52,21 @@
 2018-05-25 15:56:12,448 INFO (SnsFilter.java:31)- filter 耗时：636
 2018-05-25 15:57:54,248 INFO (SnsFilter.java:22)- 销毁过滤器
 2018-05-25 15:57:54,249 INFO (SnsListener.java:14)- 监听到事件
+2018-05-25 16:04:18,047 INFO (StartupInfoLogger.java:48)- Starting Run on LAPTOP-JVQUUATT with PID 9100 (E:\springCloud\GitHub\springboottest\sns_test1\target\classes started by zhaozd in E:\springCloud\GitHub\springboottest\sns_test1)
+2018-05-25 16:04:18,051 DEBUG (StartupInfoLogger.java:51)- Running with Spring Boot v1.5.2.RELEASE, Spring v4.3.7.RELEASE
+2018-05-25 16:04:18,052 INFO (SpringApplication.java:641)- The following profiles are active: prod
+2018-05-25 16:04:22,235 INFO (SnsListener.java:20)- 初始化监听器------
+2018-05-25 16:04:22,240 INFO (SnsFilter.java:37)- 初始化过滤器
+2018-05-25 16:04:24,915 INFO (StartupInfoLogger.java:57)- Started Run in 7.426 seconds (JVM running for 8.045)
+2018-05-25 16:04:32,142 INFO (SnsInterceptor.java:42)- ========preHandle=========
+2018-05-25 16:04:32,143 INFO (SnsInterceptor.java:43)- hello.test.ProductController$$EnhancerBySpringCGLIB$$323c764a
+2018-05-25 16:04:32,143 INFO (SnsInterceptor.java:44)- getInfoById
+2018-05-25 16:04:32,478 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: select product_id, product_name, product_type, create_user from t_product where product_id = ? 
+2018-05-25 16:04:32,502 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 1(Integer)
+2018-05-25 16:04:32,554 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 1
+2018-05-25 16:04:32,623 INFO (SnsInterceptor.java:34)- ========postHandle=========
+2018-05-25 16:04:32,624 INFO (SnsInterceptor.java:36)- 耗时:480
+2018-05-25 16:04:32,624 INFO (SnsInterceptor.java:21)- ========afterCompletion=========
+2018-05-25 16:04:32,625 INFO (SnsInterceptor.java:23)- 耗时:481
+2018-05-25 16:04:32,628 INFO (SnsFilter.java:31)- filter 耗时：497
+2018-05-25 16:04:32,664 INFO (SnsFilter.java:31)- filter 耗时：23
