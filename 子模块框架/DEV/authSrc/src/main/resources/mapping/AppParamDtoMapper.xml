@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yaic.auth.interior.dao.AppParamDtoMapper">
+  <resultMap id="BaseResultMap" type="com.yaic.auth.interior.dto.AppParamDto">
+    <id column="PARAMETER_ID" jdbcType="VARCHAR" property="parameterId" />
+    <result column="CREATED_DATE" jdbcType="TIMESTAMP" property="createdDate" />
+    <result column="CREATED_BY" jdbcType="VARCHAR" property="createdBy" />
+    <result column="UPDATED_DATE" jdbcType="TIMESTAMP" property="updatedDate" />
+    <result column="UPDATED_BY" jdbcType="VARCHAR" property="updatedBy" />
+    <result column="PARAMETER_TYPE" jdbcType="VARCHAR" property="parameterType" />
+    <result column="PARAMETER_CODE" jdbcType="VARCHAR" property="parameterCode" />
+    <result column="PARAMETER_CNAME" jdbcType="VARCHAR" property="parameterCname" />
+    <result column="PARAMETER_ENAME" jdbcType="VARCHAR" property="parameterEname" />
+    <result column="PARAMETER_TNAME" jdbcType="VARCHAR" property="parameterTname" />
+    <result column="VALID_FLAG" jdbcType="INTEGER" property="validFlag" />
+    <result column="REMARK" jdbcType="VARCHAR" property="remark" />
+    <result column="FLAG" jdbcType="VARCHAR" property="flag" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    PARAMETER_ID, CREATED_DATE, CREATED_BY, UPDATED_DATE, UPDATED_BY, PARAMETER_TYPE, 
+    PARAMETER_CODE, PARAMETER_CNAME, PARAMETER_ENAME, PARAMETER_TNAME, VALID_FLAG, REMARK, 
+    FLAG
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from app_parameter
+    where PARAMETER_ID = #{parameterId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from app_parameter
+    where PARAMETER_ID = #{parameterId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.yaic.auth.interior.dto.AppParamDto">
+    insert into app_parameter (PARAMETER_ID, CREATED_DATE, CREATED_BY, 
+      UPDATED_DATE, UPDATED_BY, PARAMETER_TYPE, 
+      PARAMETER_CODE, PARAMETER_CNAME, PARAMETER_ENAME, 
+      PARAMETER_TNAME, VALID_FLAG, REMARK, 
+      FLAG)
+    values (#{parameterId,jdbcType=VARCHAR}, #{createdDate,jdbcType=TIMESTAMP}, #{createdBy,jdbcType=VARCHAR}, 
+      #{updatedDate,jdbcType=TIMESTAMP}, #{updatedBy,jdbcType=VARCHAR}, #{parameterType,jdbcType=VARCHAR}, 
+      #{parameterCode,jdbcType=VARCHAR}, #{parameterCname,jdbcType=VARCHAR}, #{parameterEname,jdbcType=VARCHAR}, 
+      #{parameterTname,jdbcType=VARCHAR}, #{validFlag,jdbcType=CHAR}, #{remark,jdbcType=VARCHAR}, 
+      #{flag,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.yaic.auth.interior.dto.AppParamDto">
+    insert into app_parameter
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="parameterId != null">
+        PARAMETER_ID,
+      </if>
+      <if test="createdDate != null">
+        CREATED_DATE,
+      </if>
+      <if test="createdBy != null">
+        CREATED_BY,
+      </if>
+      <if test="updatedDate != null">
+        UPDATED_DATE,
+      </if>
+      <if test="updatedBy != null">
+        UPDATED_BY,
+      </if>
+      <if test="parameterType != null">
+        PARAMETER_TYPE,
+      </if>
+      <if test="parameterCode != null">
+        PARAMETER_CODE,
+      </if>
+      <if test="parameterCname != null">
+        PARAMETER_CNAME,
+      </if>
+      <if test="parameterEname != null">
+        PARAMETER_ENAME,
+      </if>
+      <if test="parameterTname != null">
+        PARAMETER_TNAME,
+      </if>
+      <if test="validFlag != null">
+        VALID_FLAG,
+      </if>
+      <if test="remark != null">
+        REMARK,
+      </if>
+      <if test="flag != null">
+        FLAG,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="parameterId != null">
+        #{parameterId,jdbcType=VARCHAR},
+      </if>
+      <if test="createdDate != null">
+        #{createdDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createdBy != null">
+        #{createdBy,jdbcType=VARCHAR},
+      </if>
+      <if test="updatedDate != null">
+        #{updatedDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatedBy != null">
+        #{updatedBy,jdbcType=VARCHAR},
+      </if>
+      <if test="parameterType != null">
+        #{parameterType,jdbcType=VARCHAR},
+      </if>
+      <if test="parameterCode != null">
+        #{parameterCode,jdbcType=VARCHAR},
+      </if>
+      <if test="parameterCname != null">
+        #{parameterCname,jdbcType=VARCHAR},
+      </if>
+      <if test="parameterEname != null">
+        #{parameterEname,jdbcType=VARCHAR},
+      </if>
+      <if test="parameterTname != null">
+        #{parameterTname,jdbcType=VARCHAR},
+      </if>
+      <if test="validFlag != null">
+        #{validFlag,jdbcType=CHAR},
+      </if>
+      <if test="remark != null">
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="flag != null">
+        #{flag,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.yaic.auth.interior.dto.AppParamDto">
+    update app_parameter
+    <set>
+      <if test="createdDate != null">
+        CREATED_DATE = #{createdDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createdBy != null">
+        CREATED_BY = #{createdBy,jdbcType=VARCHAR},
+      </if>
+      <if test="updatedDate != null">
+        UPDATED_DATE = #{updatedDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatedBy != null">
+        UPDATED_BY = #{updatedBy,jdbcType=VARCHAR},
+      </if>
+      <if test="parameterType != null">
+        PARAMETER_TYPE = #{parameterType,jdbcType=VARCHAR},
+      </if>
+      <if test="parameterCode != null">
+        PARAMETER_CODE = #{parameterCode,jdbcType=VARCHAR},
+      </if>
+      <if test="parameterCname != null">
+        PARAMETER_CNAME = #{parameterCname,jdbcType=VARCHAR},
+      </if>
+      <if test="parameterEname != null">
+        PARAMETER_ENAME = #{parameterEname,jdbcType=VARCHAR},
+      </if>
+      <if test="parameterTname != null">
+        PARAMETER_TNAME = #{parameterTname,jdbcType=VARCHAR},
+      </if>
+      <if test="validFlag != null">
+        VALID_FLAG = #{validFlag,jdbcType=CHAR},
+      </if>
+      <if test="remark != null">
+        REMARK = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="flag != null">
+        FLAG = #{flag,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where PARAMETER_ID = #{parameterId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.yaic.auth.interior.dto.AppParamDto">
+    update app_parameter
+    set CREATED_DATE = #{createdDate,jdbcType=TIMESTAMP},
+      CREATED_BY = #{createdBy,jdbcType=VARCHAR},
+      UPDATED_DATE = #{updatedDate,jdbcType=TIMESTAMP},
+      UPDATED_BY = #{updatedBy,jdbcType=VARCHAR},
+      PARAMETER_TYPE = #{parameterType,jdbcType=VARCHAR},
+      PARAMETER_CODE = #{parameterCode,jdbcType=VARCHAR},
+      PARAMETER_CNAME = #{parameterCname,jdbcType=VARCHAR},
+      PARAMETER_ENAME = #{parameterEname,jdbcType=VARCHAR},
+      PARAMETER_TNAME = #{parameterTname,jdbcType=VARCHAR},
+      VALID_FLAG = #{validFlag,jdbcType=CHAR},
+      REMARK = #{remark,jdbcType=VARCHAR},
+      FLAG = #{flag,jdbcType=VARCHAR}
+    where PARAMETER_ID = #{parameterId,jdbcType=VARCHAR}
+  </update>
+</mapper>

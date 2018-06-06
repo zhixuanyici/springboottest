@@ -1,0 +1,253 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yaic.auth.thirdParty.dao.CallbackUrlDtoMapper">
+	<resultMap id="BaseResultMap" type="com.yaic.auth.thirdParty.dto.CallbackUrlDto">
+		<id column="callback_url_id" jdbcType="INTEGER" property="callbackUrlId" />
+		<result column="project_id" jdbcType="INTEGER" property="projectId" />
+		<result column="callback_type" jdbcType="VARCHAR" property="callbackType" />
+		<result column="callback_url" jdbcType="VARCHAR" property="callbackUrl" />
+		<result column="callback_method" jdbcType="VARCHAR" property="callbackMethod" />
+		<result column="valid_flag" jdbcType="INTEGER" property="validFlag" />
+		<result column="created_date" jdbcType="TIMESTAMP" property="createdDate" />
+		<result column="created_user" jdbcType="VARCHAR" property="createdUser" />
+		<result column="updated_date" jdbcType="TIMESTAMP" property="updatedDate" />
+		<result column="updated_user" jdbcType="VARCHAR" property="updatedUser" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		callback_url_id, project_id, callback_type, callback_url,
+		callback_method, valid_flag,
+		created_date, created_user, updated_date,
+		updated_user
+	</sql>
+	<select id="selectByPrimaryKey" parameterType="java.lang.Integer"
+		resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from t_callback_url
+		where callback_url_id =
+		#{callbackUrlId,jdbcType=INTEGER}
+	</select>
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+		delete from
+		t_callback_url
+		where callback_url_id =
+		#{callbackUrlId,jdbcType=INTEGER}
+	</delete>
+	<insert id="insert" parameterType="com.yaic.auth.thirdParty.dto.CallbackUrlDto">
+		insert into t_callback_url
+		(callback_url_id, project_id, callback_type,
+		callback_url,
+		callback_method, valid_flag,
+		created_date, created_user, updated_date,
+		updated_user)
+		values (#{callbackUrlId,jdbcType=INTEGER},
+		#{projectId,jdbcType=INTEGER},
+		#{callbackType,jdbcType=VARCHAR},
+		#{callbackUrl,jdbcType=VARCHAR}, #{callbackMethod,jdbcType=VARCHAR},
+		#{validFlag,jdbcType=CHAR},
+		#{createdDate,jdbcType=TIMESTAMP},
+		#{createdUser,jdbcType=VARCHAR},
+		#{updatedDate,jdbcType=TIMESTAMP},
+		#{updatedUser,jdbcType=VARCHAR})
+	</insert>
+	<insert id="insertSelective" parameterType="com.yaic.auth.thirdParty.dto.CallbackUrlDto">
+		insert into t_callback_url
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="callbackUrlId != null">
+				callback_url_id,
+			</if>
+			<if test="projectId != null">
+				project_id,
+			</if>
+			<if test="callbackType != null">
+				callback_type,
+			</if>
+			<if test="callbackUrl != null">
+				callback_url,
+			</if>
+			<if test="callbackMethod != null">
+				callback_method,
+			</if>
+			<if test="validFlag != null">
+				valid_flag,
+			</if>
+			<if test="createdDate != null">
+				created_date,
+			</if>
+			<if test="createdUser != null">
+				created_user,
+			</if>
+			<if test="updatedDate != null">
+				updated_date,
+			</if>
+			<if test="updatedUser != null">
+				updated_user,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="callbackUrlId != null">
+				#{callbackUrlId,jdbcType=INTEGER},
+			</if>
+			<if test="projectId != null">
+				#{projectId,jdbcType=INTEGER},
+			</if>
+			<if test="callbackType != null">
+				#{callbackType,jdbcType=VARCHAR},
+			</if>
+			<if test="callbackUrl != null">
+				#{callbackUrl,jdbcType=VARCHAR},
+			</if>
+			<if test="callbackMethod != null">
+				#{callbackMethod,jdbcType=VARCHAR},
+			</if>
+			<if test="validFlag != null">
+				#{validFlag,jdbcType=CHAR},
+			</if>
+			<if test="createdDate != null">
+				#{createdDate,jdbcType=TIMESTAMP},
+			</if>
+			<if test="createdUser != null">
+				#{createdUser,jdbcType=VARCHAR},
+			</if>
+			<if test="updatedDate != null">
+				#{updatedDate,jdbcType=TIMESTAMP},
+			</if>
+			<if test="updatedUser != null">
+				#{updatedUser,jdbcType=VARCHAR},
+			</if>
+		</trim>
+	</insert>
+	<update id="updateByPrimaryKeySelective" parameterType="com.yaic.auth.thirdParty.dto.CallbackUrlDto">
+		update t_callback_url
+		<set>
+			<if test="projectId != null">
+				project_id = #{projectId,jdbcType=INTEGER},
+			</if>
+			<if test="callbackType != null">
+				callback_type = #{callbackType,jdbcType=VARCHAR},
+			</if>
+			<if test="callbackUrl != null">
+				callback_url = #{callbackUrl,jdbcType=VARCHAR},
+			</if>
+			<if test="callbackMethod != null">
+				callback_method = #{callbackMethod,jdbcType=VARCHAR},
+			</if>
+			<if test="validFlag != null">
+				valid_flag = #{validFlag,jdbcType=CHAR},
+			</if>
+			<if test="createdDate != null">
+				created_date = #{createdDate,jdbcType=TIMESTAMP},
+			</if>
+			<if test="createdUser != null">
+				created_user = #{createdUser,jdbcType=VARCHAR},
+			</if>
+			<if test="updatedDate != null">
+				updated_date = #{updatedDate,jdbcType=TIMESTAMP},
+			</if>
+			<if test="updatedUser != null">
+				updated_user = #{updatedUser,jdbcType=VARCHAR},
+			</if>
+		</set>
+		where callback_url_id = #{callbackUrlId,jdbcType=INTEGER}
+	</update>
+	<update id="updateByPrimaryKey" parameterType="com.yaic.auth.thirdParty.dto.CallbackUrlDto">
+		update
+		t_callback_url
+		set project_id = #{projectId,jdbcType=INTEGER},
+		callback_type = #{callbackType,jdbcType=VARCHAR},
+		callback_url =
+		#{callbackUrl,jdbcType=VARCHAR},
+		callback_method =
+		#{callbackMethod,jdbcType=VARCHAR},
+		valid_flag =
+		#{validFlag,jdbcType=CHAR},
+		created_date =
+		#{createdDate,jdbcType=TIMESTAMP},
+		created_user =
+		#{createdUser,jdbcType=VARCHAR},
+		updated_date =
+		#{updatedDate,jdbcType=TIMESTAMP},
+		updated_user =
+		#{updatedUser,jdbcType=VARCHAR}
+		where callback_url_id =
+		#{callbackUrlId,jdbcType=INTEGER}
+	</update>
+	<select id="selectByConditions" parameterType="com.yaic.auth.thirdParty.dto.CallbackUrlDto"
+		resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from t_callback_url
+		<trim prefix="WHERE (" suffix=")" prefixOverrides="AND">
+			<if test="callbackUrlId != null">
+				AND callback_url_id = #{callbackUrlId,jdbcType=INTEGER}
+			</if>
+			<if test="projectId != null">
+				AND project_id = #{projectId,jdbcType=INTEGER}
+			</if>
+			<if test="callbackType != null">
+				AND callback_type = #{callbackType,jdbcType=VARCHAR}
+			</if>
+			<if test="callbackUrl != null">
+				AND callback_url = #{callbackUrl,jdbcType=VARCHAR}
+			</if>
+			<if test="callbackMethod != null">
+				AND callback_method = #{callbackMethod,jdbcType=VARCHAR}
+			</if>
+			<if test="validFlag != null">
+				AND valid_flag = #{validFlag,jdbcType=CHAR}
+			</if>
+			<if test="createdDate != null">
+				AND created_date = #{createdDate,jdbcType=TIMESTAMP}
+			</if>
+			<if test="createdUser != null">
+				AND created_user = #{createdUser,jdbcType=VARCHAR}
+			</if>
+			<if test="updatedDate != null">
+				AND updated_date = #{updatedDate,jdbcType=TIMESTAMP}
+			</if>
+			<if test="updatedUser != null">
+				AND updated_user = #{updatedUser,jdbcType=VARCHAR}
+			</if>
+		</trim>
+	</select>
+	<select id="selectFuzzyByConditions" parameterType="com.yaic.auth.thirdParty.dto.CallbackUrlDto"
+		resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from t_callback_url
+		<trim prefix="WHERE (" suffix=")" prefixOverrides="AND">
+			<if test="callbackUrlId != null">
+				AND callback_url_id = #{callbackUrlId,jdbcType=INTEGER}
+			</if>
+			<if test="projectId != null">
+				AND project_id = #{projectId,jdbcType=INTEGER}
+			</if>
+			<if test="callbackType != null">
+				AND callback_type = #{callbackType,jdbcType=VARCHAR}
+			</if>
+			<if test="callbackUrl != null">
+				AND callback_url = #{callbackUrl,jdbcType=VARCHAR}
+			</if>
+			<if test="callbackMethod != null">
+				AND callback_method = #{callbackMethod,jdbcType=VARCHAR}
+			</if>
+			<if test="validFlag != null">
+				AND valid_flag = #{validFlag,jdbcType=CHAR}
+			</if>
+			<if test="createdDate != null">
+				AND created_date = #{createdDate,jdbcType=TIMESTAMP}
+			</if>
+			<if test="createdUser != null">
+				AND created_user = #{createdUser,jdbcType=VARCHAR}
+			</if>
+			<if test="updatedDate != null">
+				AND updated_date = #{updatedDate,jdbcType=TIMESTAMP}
+			</if>
+			<if test="updatedUser != null">
+				AND updated_user = #{updatedUser,jdbcType=VARCHAR}
+			</if>
+		</trim>
+	</select>
+
+
+</mapper>

@@ -1,0 +1,39 @@
+
+#端口 
+#mysql jdbc
+
+
+
+spring:
+  #配置文件环境
+  profiles:
+    active: dev
+  #druid配置
+  datasource: 
+    druid:
+      #监控范围
+      aop-patterns: com.yaic.auth.*
+      stat-view-servlet:
+        login-username: admin
+        login-password: 123
+  
+#mybatis加载
+mybatis:
+  mapper-locations: classpath:mapping/*.xml
+  type-aliases-package: com.yaic.auth.*.dto
+  #下划线转驼峰命名
+  configuration:
+    map-underscore-to-camel-case: true
+    
+    
+# 分页配置
+pagehelper:
+  helper-dialect: mysql
+  reasonable: true
+  support-methods-arguments: true
+  params: count=countSql
+    
+#logging: 
+  #加载日志文件
+  #config: classpath:logback.xml
+  

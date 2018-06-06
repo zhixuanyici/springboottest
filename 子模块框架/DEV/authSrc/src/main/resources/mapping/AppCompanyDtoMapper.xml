@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yaic.auth.interior.dao.AppCompanyDtoMapper">
+  <resultMap id="BaseResultMap" type="com.yaic.auth.interior.dto.AppCompanyDto">
+    <id column="COMPANY_ID" jdbcType="VARCHAR" property="companyId" />
+    <result column="CREATED_DATE" jdbcType="TIMESTAMP" property="createdDate" />
+    <result column="CREATED_BY" jdbcType="VARCHAR" property="createdBy" />
+    <result column="UPDATED_DATE" jdbcType="TIMESTAMP" property="updatedDate" />
+    <result column="UPDATED_BY" jdbcType="VARCHAR" property="updatedBy" />
+    <result column="COMPANY_CNAME" jdbcType="VARCHAR" property="companyCname" />
+    <result column="COMPANY_ENAME" jdbcType="VARCHAR" property="companyEname" />
+    <result column="COMPANY_TNAME" jdbcType="VARCHAR" property="companyTname" />
+    <result column="COMPANY_LEVEL" jdbcType="DECIMAL" property="companyLevel" />
+    <result column="PARENT_COMPANY_ID" jdbcType="VARCHAR" property="parentCompanyId" />
+    <result column="VALID_FLAG" jdbcType="INTEGER" property="validFlag" />
+    <result column="REMARK" jdbcType="VARCHAR" property="remark" />
+    <result column="FLAG" jdbcType="VARCHAR" property="flag" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    COMPANY_ID, CREATED_DATE, CREATED_BY, UPDATED_DATE, UPDATED_BY, COMPANY_CNAME, COMPANY_ENAME, 
+    COMPANY_TNAME, COMPANY_LEVEL, PARENT_COMPANY_ID, VALID_FLAG, REMARK, FLAG
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from app_company
+    where COMPANY_ID = #{companyId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from app_company
+    where COMPANY_ID = #{companyId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.yaic.auth.interior.dto.AppCompanyDto">
+    insert into app_company (COMPANY_ID, CREATED_DATE, CREATED_BY, 
+      UPDATED_DATE, UPDATED_BY, COMPANY_CNAME, 
+      COMPANY_ENAME, COMPANY_TNAME, COMPANY_LEVEL, 
+      PARENT_COMPANY_ID, VALID_FLAG, REMARK, 
+      FLAG)
+    values (#{companyId,jdbcType=VARCHAR}, #{createdDate,jdbcType=TIMESTAMP}, #{createdBy,jdbcType=VARCHAR}, 
+      #{updatedDate,jdbcType=TIMESTAMP}, #{updatedBy,jdbcType=VARCHAR}, #{companyCname,jdbcType=VARCHAR}, 
+      #{companyEname,jdbcType=VARCHAR}, #{companyTname,jdbcType=VARCHAR}, #{companyLevel,jdbcType=DECIMAL}, 
+      #{parentCompanyId,jdbcType=VARCHAR}, #{validFlag,jdbcType=CHAR}, #{remark,jdbcType=VARCHAR}, 
+      #{flag,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.yaic.auth.interior.dto.AppCompanyDto">
+    insert into app_company
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="companyId != null">
+        COMPANY_ID,
+      </if>
+      <if test="createdDate != null">
+        CREATED_DATE,
+      </if>
+      <if test="createdBy != null">
+        CREATED_BY,
+      </if>
+      <if test="updatedDate != null">
+        UPDATED_DATE,
+      </if>
+      <if test="updatedBy != null">
+        UPDATED_BY,
+      </if>
+      <if test="companyCname != null">
+        COMPANY_CNAME,
+      </if>
+      <if test="companyEname != null">
+        COMPANY_ENAME,
+      </if>
+      <if test="companyTname != null">
+        COMPANY_TNAME,
+      </if>
+      <if test="companyLevel != null">
+        COMPANY_LEVEL,
+      </if>
+      <if test="parentCompanyId != null">
+        PARENT_COMPANY_ID,
+      </if>
+      <if test="validFlag != null">
+        VALID_FLAG,
+      </if>
+      <if test="remark != null">
+        REMARK,
+      </if>
+      <if test="flag != null">
+        FLAG,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="companyId != null">
+        #{companyId,jdbcType=VARCHAR},
+      </if>
+      <if test="createdDate != null">
+        #{createdDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createdBy != null">
+        #{createdBy,jdbcType=VARCHAR},
+      </if>
+      <if test="updatedDate != null">
+        #{updatedDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatedBy != null">
+        #{updatedBy,jdbcType=VARCHAR},
+      </if>
+      <if test="companyCname != null">
+        #{companyCname,jdbcType=VARCHAR},
+      </if>
+      <if test="companyEname != null">
+        #{companyEname,jdbcType=VARCHAR},
+      </if>
+      <if test="companyTname != null">
+        #{companyTname,jdbcType=VARCHAR},
+      </if>
+      <if test="companyLevel != null">
+        #{companyLevel,jdbcType=DECIMAL},
+      </if>
+      <if test="parentCompanyId != null">
+        #{parentCompanyId,jdbcType=VARCHAR},
+      </if>
+      <if test="validFlag != null">
+        #{validFlag,jdbcType=CHAR},
+      </if>
+      <if test="remark != null">
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="flag != null">
+        #{flag,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.yaic.auth.interior.dto.AppCompanyDto">
+    update app_company
+    <set>
+      <if test="createdDate != null">
+        CREATED_DATE = #{createdDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createdBy != null">
+        CREATED_BY = #{createdBy,jdbcType=VARCHAR},
+      </if>
+      <if test="updatedDate != null">
+        UPDATED_DATE = #{updatedDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatedBy != null">
+        UPDATED_BY = #{updatedBy,jdbcType=VARCHAR},
+      </if>
+      <if test="companyCname != null">
+        COMPANY_CNAME = #{companyCname,jdbcType=VARCHAR},
+      </if>
+      <if test="companyEname != null">
+        COMPANY_ENAME = #{companyEname,jdbcType=VARCHAR},
+      </if>
+      <if test="companyTname != null">
+        COMPANY_TNAME = #{companyTname,jdbcType=VARCHAR},
+      </if>
+      <if test="companyLevel != null">
+        COMPANY_LEVEL = #{companyLevel,jdbcType=DECIMAL},
+      </if>
+      <if test="parentCompanyId != null">
+        PARENT_COMPANY_ID = #{parentCompanyId,jdbcType=VARCHAR},
+      </if>
+      <if test="validFlag != null">
+        VALID_FLAG = #{validFlag,jdbcType=CHAR},
+      </if>
+      <if test="remark != null">
+        REMARK = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="flag != null">
+        FLAG = #{flag,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where COMPANY_ID = #{companyId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.yaic.auth.interior.dto.AppCompanyDto">
+    update app_company
+    set CREATED_DATE = #{createdDate,jdbcType=TIMESTAMP},
+      CREATED_BY = #{createdBy,jdbcType=VARCHAR},
+      UPDATED_DATE = #{updatedDate,jdbcType=TIMESTAMP},
+      UPDATED_BY = #{updatedBy,jdbcType=VARCHAR},
+      COMPANY_CNAME = #{companyCname,jdbcType=VARCHAR},
+      COMPANY_ENAME = #{companyEname,jdbcType=VARCHAR},
+      COMPANY_TNAME = #{companyTname,jdbcType=VARCHAR},
+      COMPANY_LEVEL = #{companyLevel,jdbcType=DECIMAL},
+      PARENT_COMPANY_ID = #{parentCompanyId,jdbcType=VARCHAR},
+      VALID_FLAG = #{validFlag,jdbcType=CHAR},
+      REMARK = #{remark,jdbcType=VARCHAR},
+      FLAG = #{flag,jdbcType=VARCHAR}
+    where COMPANY_ID = #{companyId,jdbcType=VARCHAR}
+  </update>
+</mapper>

@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yaic.auth.thirdParty.dao.AuthEncryptDtoMapper">
+  <resultMap id="BaseResultMap" type="com.yaic.auth.thirdParty.dto.AuthEncryptDto">
+    <id column="auth_id" jdbcType="INTEGER" property="authId" />
+    <result column="auth_type" jdbcType="VARCHAR" property="authType" />
+    <result column="auth_param1" jdbcType="VARCHAR" property="authParam1" />
+    <result column="auth_param2" jdbcType="VARCHAR" property="authParam2" />
+    <result column="encrypt_type" jdbcType="VARCHAR" property="encryptType" />
+    <result column="encrypt_param1" jdbcType="VARCHAR" property="encryptParam1" />
+    <result column="encrypt_param2" jdbcType="VARCHAR" property="encryptParam2" />
+    <result column="valid_flag" jdbcType="INTEGER" property="validFlag" />
+    <result column="created_date" jdbcType="TIMESTAMP" property="createdDate" />
+    <result column="created_user" jdbcType="VARCHAR" property="createdUser" />
+    <result column="updated_date" jdbcType="TIMESTAMP" property="updatedDate" />
+    <result column="updated_user" jdbcType="VARCHAR" property="updatedUser" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    auth_id, auth_type, auth_param1, auth_param2, encrypt_type, encrypt_param1, encrypt_param2, 
+    valid_flag, created_date, created_user, updated_date, updated_user
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from t_auth_encrypt
+    where auth_id = #{authId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from t_auth_encrypt
+    where auth_id = #{authId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.yaic.auth.thirdParty.dto.AuthEncryptDto">
+    insert into t_auth_encrypt (auth_id, auth_type, auth_param1, 
+      auth_param2, encrypt_type, encrypt_param1, 
+      encrypt_param2, valid_flag, created_date, 
+      created_user, updated_date, updated_user
+      )
+    values (#{authId,jdbcType=INTEGER}, #{authType,jdbcType=VARCHAR}, #{authParam1,jdbcType=VARCHAR}, 
+      #{authParam2,jdbcType=VARCHAR}, #{encryptType,jdbcType=VARCHAR}, #{encryptParam1,jdbcType=VARCHAR}, 
+      #{encryptParam2,jdbcType=VARCHAR}, #{validFlag,jdbcType=CHAR}, #{createdDate,jdbcType=TIMESTAMP}, 
+      #{createdUser,jdbcType=VARCHAR}, #{updatedDate,jdbcType=TIMESTAMP}, #{updatedUser,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.yaic.auth.thirdParty.dto.AuthEncryptDto">
+    insert into t_auth_encrypt
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="authId != null">
+        auth_id,
+      </if>
+      <if test="authType != null">
+        auth_type,
+      </if>
+      <if test="authParam1 != null">
+        auth_param1,
+      </if>
+      <if test="authParam2 != null">
+        auth_param2,
+      </if>
+      <if test="encryptType != null">
+        encrypt_type,
+      </if>
+      <if test="encryptParam1 != null">
+        encrypt_param1,
+      </if>
+      <if test="encryptParam2 != null">
+        encrypt_param2,
+      </if>
+      <if test="validFlag != null">
+        valid_flag,
+      </if>
+      <if test="createdDate != null">
+        created_date,
+      </if>
+      <if test="createdUser != null">
+        created_user,
+      </if>
+      <if test="updatedDate != null">
+        updated_date,
+      </if>
+      <if test="updatedUser != null">
+        updated_user,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="authId != null">
+        #{authId,jdbcType=INTEGER},
+      </if>
+      <if test="authType != null">
+        #{authType,jdbcType=VARCHAR},
+      </if>
+      <if test="authParam1 != null">
+        #{authParam1,jdbcType=VARCHAR},
+      </if>
+      <if test="authParam2 != null">
+        #{authParam2,jdbcType=VARCHAR},
+      </if>
+      <if test="encryptType != null">
+        #{encryptType,jdbcType=VARCHAR},
+      </if>
+      <if test="encryptParam1 != null">
+        #{encryptParam1,jdbcType=VARCHAR},
+      </if>
+      <if test="encryptParam2 != null">
+        #{encryptParam2,jdbcType=VARCHAR},
+      </if>
+      <if test="validFlag != null">
+        #{validFlag,jdbcType=CHAR},
+      </if>
+      <if test="createdDate != null">
+        #{createdDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createdUser != null">
+        #{createdUser,jdbcType=VARCHAR},
+      </if>
+      <if test="updatedDate != null">
+        #{updatedDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatedUser != null">
+        #{updatedUser,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.yaic.auth.thirdParty.dto.AuthEncryptDto">
+    update t_auth_encrypt
+    <set>
+      <if test="authType != null">
+        auth_type = #{authType,jdbcType=VARCHAR},
+      </if>
+      <if test="authParam1 != null">
+        auth_param1 = #{authParam1,jdbcType=VARCHAR},
+      </if>
+      <if test="authParam2 != null">
+        auth_param2 = #{authParam2,jdbcType=VARCHAR},
+      </if>
+      <if test="encryptType != null">
+        encrypt_type = #{encryptType,jdbcType=VARCHAR},
+      </if>
+      <if test="encryptParam1 != null">
+        encrypt_param1 = #{encryptParam1,jdbcType=VARCHAR},
+      </if>
+      <if test="encryptParam2 != null">
+        encrypt_param2 = #{encryptParam2,jdbcType=VARCHAR},
+      </if>
+      <if test="validFlag != null">
+        valid_flag = #{validFlag,jdbcType=CHAR},
+      </if>
+      <if test="createdDate != null">
+        created_date = #{createdDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createdUser != null">
+        created_user = #{createdUser,jdbcType=VARCHAR},
+      </if>
+      <if test="updatedDate != null">
+        updated_date = #{updatedDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatedUser != null">
+        updated_user = #{updatedUser,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where auth_id = #{authId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.yaic.auth.thirdParty.dto.AuthEncryptDto">
+    update t_auth_encrypt
+    set auth_type = #{authType,jdbcType=VARCHAR},
+      auth_param1 = #{authParam1,jdbcType=VARCHAR},
+      auth_param2 = #{authParam2,jdbcType=VARCHAR},
+      encrypt_type = #{encryptType,jdbcType=VARCHAR},
+      encrypt_param1 = #{encryptParam1,jdbcType=VARCHAR},
+      encrypt_param2 = #{encryptParam2,jdbcType=VARCHAR},
+      valid_flag = #{validFlag,jdbcType=CHAR},
+      created_date = #{createdDate,jdbcType=TIMESTAMP},
+      created_user = #{createdUser,jdbcType=VARCHAR},
+      updated_date = #{updatedDate,jdbcType=TIMESTAMP},
+      updated_user = #{updatedUser,jdbcType=VARCHAR}
+    where auth_id = #{authId,jdbcType=INTEGER}
+  </update>
+</mapper>

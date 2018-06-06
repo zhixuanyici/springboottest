@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yaic.auth.thirdParty.dao.AuthMappingDtoMapper">
+	<resultMap id="BaseResultMap" type="com.yaic.auth.thirdParty.dto.AuthMappingDto">
+		<id column="mapping_id" jdbcType="INTEGER" property="mappingId" />
+		<result column="project_id" jdbcType="INTEGER" property="projectId" />
+		<result column="request_type" jdbcType="VARCHAR" property="requestType" />
+		<result column="request_url" jdbcType="VARCHAR" property="requestUrl" />
+		<result column="server_id" jdbcType="INTEGER" property="serverId" />
+		<result column="valid_flag" jdbcType="INTEGER" property="validFlag" />
+		<result column="created_date" jdbcType="TIMESTAMP" property="createdDate" />
+		<result column="created_user" jdbcType="VARCHAR" property="createdUser" />
+		<result column="updated_date" jdbcType="TIMESTAMP" property="updatedDate" />
+		<result column="updated_user" jdbcType="VARCHAR" property="updatedUser" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		mapping_id, project_id, request_type, request_url,
+		server_id, valid_flag,
+		created_date,
+		created_user, updated_date,
+		updated_user
+	</sql>
+	<select id="selectByPrimaryKey" parameterType="java.lang.Integer"
+		resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from t_auth_mapping
+		where mapping_id = #{mappingId,jdbcType=INTEGER}
+	</select>
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+		delete from
+		t_auth_mapping
+		where mapping_id = #{mappingId,jdbcType=INTEGER}
+	</delete>
+	<insert id="insert" parameterType="com.yaic.auth.thirdParty.dto.AuthMappingDto">
+		insert into t_auth_mapping
+		(mapping_id, project_id, request_type,
+		request_url, server_id,
+		valid_flag,
+		created_date, created_user, updated_date,
+		updated_user)
+		values (#{mappingId,jdbcType=INTEGER}, #{projectId,jdbcType=INTEGER},
+		#{requestType,jdbcType=VARCHAR},
+		#{requestUrl,jdbcType=VARCHAR},
+		#{serverId,jdbcType=INTEGER}, #{validFlag,jdbcType=CHAR},
+		#{createdDate,jdbcType=TIMESTAMP}, #{createdUser,jdbcType=VARCHAR},
+		#{updatedDate,jdbcType=TIMESTAMP},
+		#{updatedUser,jdbcType=VARCHAR})
+	</insert>
+	<insert id="insertSelective" parameterType="com.yaic.auth.thirdParty.dto.AuthMappingDto">
+		insert into t_auth_mapping
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="mappingId != null">
+				mapping_id,
+			</if>
+			<if test="projectId != null">
+				project_id,
+			</if>
+			<if test="requestType != null">
+				request_type,
+			</if>
+			<if test="requestUrl != null">
+				request_url,
+			</if>
+			<if test="serverId != null">
+				server_id,
+			</if>
+			<if test="validFlag != null">
+				valid_flag,
+			</if>
+			<if test="createdDate != null">
+				created_date,
+			</if>
+			<if test="createdUser != null">
+				created_user,
+			</if>
+			<if test="updatedDate != null">
+				updated_date,
+			</if>
+			<if test="updatedUser != null">
+				updated_user,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="mappingId != null">
+				#{mappingId,jdbcType=INTEGER},
+			</if>
+			<if test="projectId != null">
+				#{projectId,jdbcType=INTEGER},
+			</if>
+			<if test="requestType != null">
+				#{requestType,jdbcType=VARCHAR},
+			</if>
+			<if test="requestUrl != null">
+				#{requestUrl,jdbcType=VARCHAR},
+			</if>
+			<if test="serverId != null">
+				#{serverId,jdbcType=INTEGER},
+			</if>
+			<if test="validFlag != null">
+				#{validFlag,jdbcType=CHAR},
+			</if>
+			<if test="createdDate != null">
+				#{createdDate,jdbcType=TIMESTAMP},
+			</if>
+			<if test="createdUser != null">
+				#{createdUser,jdbcType=VARCHAR},
+			</if>
+			<if test="updatedDate != null">
+				#{updatedDate,jdbcType=TIMESTAMP},
+			</if>
+			<if test="updatedUser != null">
+				#{updatedUser,jdbcType=VARCHAR},
+			</if>
+		</trim>
+	</insert>
+	<update id="updateByPrimaryKeySelective" parameterType="com.yaic.auth.thirdParty.dto.AuthMappingDto">
+		update t_auth_mapping
+		<set>
+			<if test="projectId != null">
+				project_id = #{projectId,jdbcType=INTEGER},
+			</if>
+			<if test="requestType != null">
+				request_type = #{requestType,jdbcType=VARCHAR},
+			</if>
+			<if test="requestUrl != null">
+				request_url = #{requestUrl,jdbcType=VARCHAR},
+			</if>
+			<if test="serverId != null">
+				server_id = #{serverId,jdbcType=INTEGER},
+			</if>
+			<if test="validFlag != null">
+				valid_flag = #{validFlag,jdbcType=CHAR},
+			</if>
+			<if test="createdDate != null">
+				created_date = #{createdDate,jdbcType=TIMESTAMP},
+			</if>
+			<if test="createdUser != null">
+				created_user = #{createdUser,jdbcType=VARCHAR},
+			</if>
+			<if test="updatedDate != null">
+				updated_date = #{updatedDate,jdbcType=TIMESTAMP},
+			</if>
+			<if test="updatedUser != null">
+				updated_user = #{updatedUser,jdbcType=VARCHAR},
+			</if>
+		</set>
+		where mapping_id = #{mappingId,jdbcType=INTEGER}
+	</update>
+	<update id="updateByPrimaryKey" parameterType="com.yaic.auth.thirdParty.dto.AuthMappingDto">
+		update
+		t_auth_mapping
+		set project_id = #{projectId,jdbcType=INTEGER},
+		request_type = #{requestType,jdbcType=VARCHAR},
+		request_url =
+		#{requestUrl,jdbcType=VARCHAR},
+		server_id =
+		#{serverId,jdbcType=INTEGER},
+		valid_flag = #{validFlag,jdbcType=CHAR},
+		created_date = #{createdDate,jdbcType=TIMESTAMP},
+		created_user =
+		#{createdUser,jdbcType=VARCHAR},
+		updated_date =
+		#{updatedDate,jdbcType=TIMESTAMP},
+		updated_user =
+		#{updatedUser,jdbcType=VARCHAR}
+		where mapping_id =
+		#{mappingId,jdbcType=INTEGER}
+	</update>
+	<select id="selectByConditions" parameterType="com.yaic.auth.thirdParty.dto.AuthMappingDto"
+		resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from t_auth_mapping
+		<trim prefix="WHERE (" suffix=")" prefixOverrides="AND">
+			<if test="mappingId !=null">
+				AND mapping_id = #{mappingId,jdbcType=INTEGER}
+			</if>
+			<if test="projectId != null">
+				AND project_id = #{projectId,jdbcType=INTEGER}
+			</if>
+			<if test="requestType != null">
+				AND request_type = #{requestType,jdbcType=VARCHAR}
+			</if>
+			<if test="requestUrl != null">
+				AND request_url = #{requestUrl,jdbcType=VARCHAR}
+			</if>
+			<if test="serverId != null">
+				AND server_id = #{serverId,jdbcType=INTEGER}
+			</if>
+			<if test="validFlag != null">
+				AND valid_flag = #{validFlag,jdbcType=CHAR}
+			</if>
+			<if test="createdDate != null">
+				AND created_date = #{createdDate,jdbcType=TIMESTAMP}
+			</if>
+			<if test="createdUser != null">
+				AND created_user = #{createdUser,jdbcType=VARCHAR}
+			</if>
+			<if test="updatedDate != null">
+				AND updated_date = #{updatedDate,jdbcType=TIMESTAMP}
+			</if>
+			<if test="updatedUser != null">
+				AND updated_user = #{updatedUser,jdbcType=VARCHAR}
+			</if>
+		</trim>
+	</select>
+</mapper>
